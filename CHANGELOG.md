@@ -1,7 +1,15 @@
-
 # Changelog
 
 ## [Unreleased]
+
+### Added — P3: Calculator
+- Added `round_half_up` for two-decimal rounding using `ROUND_HALF_UP`.
+- Added `quality_points` for completed courses using exact `Decimal` arithmetic.
+- Added frozen `SemesterResult` and `AcademicResult` dataclasses.
+- Added semester GPA, quality points, graded credits, and passing completed credits calculations.
+- Added credit-weighted CGPA and best/lowest semester selection, with unrounded comparisons and earliest-semester tie-breaking.
+- Excluded in-progress courses from actual academic calculations.
+- Added tests for acceptance cases W1–W7, W10–W12, W14, rounding, retakes, ties, and immutability.
 
 ### Added — P2: Models and Validation
 - Added `ValidationError` for model validation failures.
