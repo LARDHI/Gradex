@@ -3,7 +3,15 @@
 
 GPA Tracker is an offline tool where a student records semesters and courses once and can view their GPA, cumulative GPA (CGPA), and what-if predictions using either a built-in grading table or their own grading table.
 
-**Status:** In development (P0)
+**Status:** In development (P1 — Grading Tables)
+
+## Implemented
+
+- Four preset grading tables with decimal grade-point values.
+- Custom grading table creation and validation.
+- Grade normalization.
+- Grade-point lookup and passing-grade checks.
+- Unit tests for grading tables, custom table validation, and normalization.
 
 ## Install
 
@@ -33,11 +41,7 @@ python -m pip install -e ".[dev]"
 python -m gpa_tracker
 ```
 
-Expected output during P0:
-
-```text
-GPA Tracker: not yet implemented.
-```
+The command-line interface is still a placeholder; interactive GPA tracking has not been implemented yet.
 
 ## Data location
 
@@ -45,6 +49,6 @@ To be written.
 
 ## Known limits
 
-This is the initial project setup. GPA calculations, grading tables, semester and course models, persistence, and interactive menus have not been implemented.
+GPA calculation, semester and course models, prediction, persistence, and interactive menus have not been implemented yet.
 
-See [the project specification, Section 1](SPEC.md#1) for the intended scope and requirements.
+See [the project specification](docs/SPEC.md) for the intended scope and requirements.
