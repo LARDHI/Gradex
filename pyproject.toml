@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpa-tracker"
+version = "0.1.0"
+description = "An offline tool for tracking semester GPA, cumulative GPA, and what-if predictions."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["gpa_tracker*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
