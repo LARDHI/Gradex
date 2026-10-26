@@ -1,9 +1,8 @@
-
 # GPA Tracker
 
-GPA Tracker is an offline tool where a student records semesters and courses once and can view their GPA, cumulative GPA (CGPA), and what-if predictions using either a built-in grading table or their own grading table.
+GPA Tracker is an offline tool where a student records semesters and courses once and can view their GPA, cumulative GPA (CGPA), completed credits, and what-if predictions using either a built-in grading table or a custom grading table.
 
-**Status:** In development (P2 — Models and Validation)
+**Status:** In development (P3 — Calculator)
 
 ## Implemented
 
@@ -24,6 +23,15 @@ GPA Tracker is an offline tool where a student records semesters and courses onc
 - `Student`: student profile, semester and course management, and grading-table validation.
 - `ValidationError`: consistent validation errors.
 - Unit tests for model validation, data integrity, and atomic mutations.
+
+### P3 — Calculator
+- Exact `Decimal` arithmetic for quality points, semester GPA, and cumulative GPA (CGPA).
+- Excludes in-progress courses from actual calculations.
+- Counts failed courses in GPA calculations but excludes their credits from completed credits.
+- Calculates best and lowest semesters using unrounded GPAs, preserving the earliest semester in ties.
+- Rounds displayed GPA values to two decimal places using `ROUND_HALF_UP`.
+- Frozen result dataclasses for semester and academic results.
+- Unit tests for calculation rules, rounding, retakes, ties, and model immutability.
 
 ## Install
 
@@ -69,6 +77,8 @@ To be written.
 
 ## Known limits
 
-GPA calculation, cumulative GPA, what-if predictions, persistence, and interactive menus have not been implemented yet.
+What-if predictions, persistence, and interactive menus have not been implemented yet.
+
+Retakes count as separate attempts; this tool does not replace an earlier grade with a newer one.
 
 See [the project specification](docs/SPEC.md) for the intended scope and requirements.
