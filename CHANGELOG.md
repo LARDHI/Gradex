@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Added — P4: Prediction
+- Added frozen `PredictionResult` for actual semester results and optional predicted values.
+- Added `predict_semester` to calculate predicted semester GPA, completed credits, and CGPA for one selected semester.
+- Added validation for selected semesters, in-progress courses, and expected grades against the active grading table.
+- Added missing-grade reporting; incomplete predictions return `None` for predicted values.
+- Added `clear_expected` to remove a course's expected grade case-insensitively without mutating the input mapping.
+- Kept predictions in memory only and preserved actual student data and best/lowest semester results.
+- Added 21 tests covering W8, W9, W15, validation, Decimal calculations, and non-mutation.
+
 ### Added — P3: Calculator
 - Added `round_half_up` for two-decimal rounding using `ROUND_HALF_UP`.
 - Added `quality_points` for completed courses using exact `Decimal` arithmetic.
