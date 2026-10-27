@@ -2,7 +2,7 @@
 
 GPA Tracker is an offline tool that allows students to manage their academic records and calculate semester GPA, cumulative GPA (CGPA), completed credits, and what-if predictions. It supports built-in and custom grading tables.
 
-**Status:** In development (P5 — Storage)
+**Status:** In development (P6 — Input Prompts)
 
 ## Implemented
 
@@ -52,6 +52,13 @@ GPA Tracker is an offline tool that allows students to manage their academic rec
 - Leaves invalid data files unchanged when loading fails.
 - Provides `apply_and_save` to persist a change and roll back in-memory state if the change or save fails.
 - Includes tests for round-trip persistence, validation, failed writes, and rollback.
+
+### P6 — Input Prompts
+- Added reusable input helpers for text, whole numbers, menu choices, course status, grades, deletion confirmation, yes/no questions, and custom grading entries.
+- Retries empty or invalid answers with specific messages; supports case-insensitive `/cancel` without treating Back (`0`) as cancellation.
+- Supports injectable input/output functions for deterministic tests.
+- Uses existing grade normalization, grading-table validation, and `CourseStatus` values.
+- Includes acceptance tests for validation, retries, cancellation, and injected I/O.
 
 ## Install
 

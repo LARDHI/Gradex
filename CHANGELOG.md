@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Added — P6: Input Prompts
+- Added reusable validated prompts for text, whole numbers, menu choices, course status, grades, deletion confirmation, yes/no questions, and custom grading entries.
+- Added retry messages for invalid input and support for case-insensitive `/cancel`; menu choice `0` remains the Back option.
+- Added injectable input/output functions so prompt behavior can be tested without calling built-in I/O directly.
+- Added acceptance tests for valid and invalid answers, retries, cancellation, custom-entry rules, and I/O injection.
+
 ### Added — P5: Storage
 - Added JSON persistence for student profiles through `save_student` and `load_student`.
 - Added `to_dict` and `from_dict` for serialization and validated reconstruction of student data.
