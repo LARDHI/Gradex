@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+### Added — P5: Storage
+- Added JSON persistence for student profiles through `save_student` and `load_student`.
+- Added `to_dict` and `from_dict` for serialization and validated reconstruction of student data.
+- Added schema versioning using `SCHEMA_VERSION`.
+- Added support for all four preset grading tables and custom grading-table definitions.
+- Added `default_data_path`, which resolves to `~/.gpa_tracker/data.json`.
+- Added `StorageError` and `MissingFileError` for persistence and missing-file failures.
+- Added strict validation for JSON structure, required and unknown fields, schema versions, course data, and grading-table configuration.
+- Added atomic file replacement to protect existing data when a save fails.
+- Added `apply_and_save` to apply a change, persist it, and roll back in-memory state when the change or save fails.
+- Added tests for profile round trips, grading-table persistence, invalid-data handling, file preservation, atomic writes, and rollback.
+
 ### Added — P4: Prediction
 - Added frozen `PredictionResult` for actual semester results and optional predicted values.
 - Added `predict_semester` to calculate predicted semester GPA, completed credits, and CGPA for one selected semester.
