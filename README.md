@@ -2,7 +2,7 @@
 
 GPA Tracker is an offline tool where a student records semesters and courses once and can view their GPA, cumulative GPA (CGPA), completed credits, and what-if predictions using either a built-in grading table or a custom grading table.
 
-**Status:** In development (P3 — Calculator)
+**Status:** In development (P4 — Prediction)
 
 ## Implemented
 
@@ -32,6 +32,15 @@ GPA Tracker is an offline tool where a student records semesters and courses onc
 - Rounds displayed GPA values to two decimal places using `ROUND_HALF_UP`.
 - Frozen result dataclasses for semester and academic results.
 - Unit tests for calculation rules, rounding, retakes, ties, and model immutability.
+
+### P4 — Prediction
+- Pure what-if predictions for in-progress courses in one selected semester.
+- Keeps actual semester results and actual CGPA alongside predicted values.
+- Validates expected grades against the active grading table; expected grades remain in memory only.
+- Calculates predicted semester GPA, completed credits, and CGPA using exact `Decimal` arithmetic without rounding.
+- Reports missing expected grades and withholds predicted values until all selected-semester in-progress courses have expectations.
+- Includes failing expected grades in GPA calculations but excludes their credits from predicted completed credits.
+- Unit tests for W8, W9, W15, validation, case-insensitive course-code matching, and non-mutation.
 
 ## Install
 
@@ -77,7 +86,7 @@ To be written.
 
 ## Known limits
 
-What-if predictions, persistence, and interactive menus have not been implemented yet.
+Persistence and interactive menus have not been implemented yet.
 
 Retakes count as separate attempts; this tool does not replace an earlier grade with a newer one.
 
