@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Added — P7: Text Formatting
+- Added pure formatting helpers for GPA and quality points, course lists and statuses, semester and academic summaries, the combined summary screen, and prediction comparisons.
+- Formatted GPA and quality-point values to two decimal places using `ROUND_HALF_UP`, with unavailable values displayed as `N/A`.
+- Added consistent plain-text layouts, including course-name truncation, in-progress grade placeholders, blank-line separation between summaries, and incomplete-prediction reporting.
+- Added acceptance tests for numeric formatting, exact output layouts, empty results, missing values, and repeatability.
+
 ### Added — P6: Input Prompts
 - Added reusable validated prompts for text, whole numbers, menu choices, course status, grades, deletion confirmation, yes/no questions, and custom grading entries.
 - Added retry messages for invalid input and support for case-insensitive `/cancel`; menu choice `0` remains the Back option.
