@@ -35,6 +35,7 @@ def make_semester(name, courses=()):
 
 def make_student(semesters, table_id="4.0-plus-minus"):
     return Student(
+        name="Test Student",
         table=preset_table(table_id),
         semesters=list(semesters),
     )
