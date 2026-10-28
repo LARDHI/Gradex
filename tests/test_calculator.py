@@ -182,13 +182,33 @@ def test_academic_result_repeatable_and_student_unchanged():
 
 def test_unrounded_values_decide_best_semester():
     table = build_custom_table([("A", "3.13"), ("B", "3.12"), ("F", "0.00")])
+
+
+    def failed_courses(prefix):
+        courses = [
+            course(f"{prefix}{i}", "F", 9)
+            for i in range(1, 56)
+        ]
+        courses.append(course(f"{prefix}56", "F", 2))
+        return courses
+
+
+
     profile = student(table, [
-        semester("Higher", [course("A", "A", 3), course("F1", "F", 497)]),
-        semester("Lower", [course("B", "B", 3), course("F2", "F", 497)]),
+        semester(
+            "Higher",
+            [course("A", "A", 3), *failed_courses("HF")],
+        ),
+        semester(
+            "Lower",
+            [course("B", "B", 3), *failed_courses("LF")],
+        ),
     ])
+
     result = academic_result(profile)
     higher = semester_result(profile.semesters[0], table)
     lower = semester_result(profile.semesters[1], table)
+
     assert round_half_up(higher.gpa) == round_half_up(lower.gpa) == Decimal("0.02")
     assert higher.gpa > lower.gpa
     assert result.best_semester == "Higher"
