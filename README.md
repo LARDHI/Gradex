@@ -2,7 +2,7 @@
 
 GPA Tracker is an offline tool that allows students to manage their academic records and calculate semester GPA, cumulative GPA (CGPA), completed credits, and what-if predictions. It supports built-in and custom grading tables.
 
-**Status:** In development (P7 — Text Formatting)
+**Status:** In development (P8 — Menus and Command-Line Flow)
 
 ## Implemented
 
@@ -60,13 +60,30 @@ GPA Tracker is an offline tool that allows students to manage their academic rec
 - Uses existing grade normalization, grading-table validation, and `CourseStatus` values.
 - Includes acceptance tests for validation, retries, cancellation, and injected I/O.
 
-## In progress
-
 ### P7 — Text Formatting
 - Added pure formatting helpers for GPA and quality points, course lists and statuses, semester and academic summaries, the combined summary screen, and prediction comparisons.
 - Formats GPA and quality points to two decimal places using `ROUND_HALF_UP`; unavailable values display as `N/A`.
 - Added acceptance tests for output layout, rounding, empty and incomplete results, and repeatability.
 - P7 remains in progress until the test suite and required checks are verified.
+
+## In progress
+
+### P8 — Menus and Command-Line Flow (In Progress)
+
+- Interactive command-line menus for academic summaries, semesters, courses,
+  GPA predictions, and student profile settings.
+- First-run profile setup and loading existing student data.
+- Semester and course creation, editing, and deletion.
+- Input validation, operation cancellation, and deletion confirmation.
+- Automatic persistence after successful changes, with protection against
+  failed or cancelled operations.
+- Support for selecting a custom data file using `--file PATH`.
+- In-memory GPA predictions that do not modify or persist expected grades.
+- Acceptance tests for CLI navigation, data persistence, validation,
+  cancellation, and error handling.
+
+P8 remains in progress until the implementation, all required acceptance
+cases, and the full test suite have been verified.
 
 ## Install
 
@@ -96,7 +113,12 @@ python -m pip install -e ".[dev]"
 python -m gpa_tracker
 ```
 
-The command-line interface is still a placeholder. Interactive GPA tracking and integration of storage operations into the CLI have not been implemented yet.
+The interactive command-line interface is under development.
+
+Run GPA Tracker with the default data file:
+
+```bash
+python -m gpa_tracker
 
 ## Tests
 
@@ -120,7 +142,12 @@ Storage operations currently require calling the storage functions programmatica
 
 ## Known limits
 
-- The interactive command-line interface is not implemented.
+```markdown
+- P8 CLI behavior remains subject to acceptance-test verification.
+- Prediction expectations remain in memory and are not persisted.
+- Retakes count as separate attempts; the tool does not replace an earlier
+  grade with a newer one.
+- The JSON storage schema is currently version 1.
 - Prediction expectations remain in memory and are not persisted.
 - Retakes count as separate attempts; the tool does not replace an earlier grade with a newer one.
 - The JSON storage schema is currently version 1.

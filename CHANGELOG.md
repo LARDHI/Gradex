@@ -2,6 +2,23 @@
 
 ## [Unreleased]
 
+### In Progress — P8: Menus and Command-Line Flow
+
+- Developing the interactive command-line flow for summaries, semesters,
+  courses, GPA predictions, and profile settings.
+- Integrating first-run setup, saved-profile loading, and configurable
+  data-file paths through `--file PATH`.
+- Implementing semester and course management with validation,
+  cancellation, and deletion confirmation.
+- Integrating persistence for successful changes while protecting saved
+  data from failed or cancelled operations.
+- Keeping GPA prediction expectations in memory without persisting them.
+- Preparing acceptance tests for CLI navigation, persistence, validation,
+  cancellation, and error handling.
+
+P8 is not complete until the required acceptance cases and full test suite
+have been verified.
+
 ### Added — P7: Text Formatting
 - Added pure formatting helpers for GPA and quality points, course lists and statuses, semester and academic summaries, the combined summary screen, and prediction comparisons.
 - Formatted GPA and quality-point values to two decimal places using `ROUND_HALF_UP`, with unavailable values displayed as `N/A`.
