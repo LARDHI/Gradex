@@ -18,7 +18,7 @@ from gpa_tracker.models import Course, CourseStatus, Semester, Student
 
 
 def course(code, grade, credits=3, status=CourseStatus.COMPLETED):
-    return Course(code=code, grade=grade, credits=credits, status=status)
+    return Course(code=code, name=f"Course {code}", grade=grade, credits=credits, status=status)
 
 
 def semester(name, courses):
@@ -26,7 +26,7 @@ def semester(name, courses):
 
 
 def student(table, semesters):
-    return Student(table=table, semesters=list(semesters))
+    return Student(name="Test Student", table=table, semesters=list(semesters))
 
 
 def test_w1_quality_points_plus_only_b_plus():
@@ -125,7 +125,7 @@ def test_w11_no_completed_courses_returns_none_values():
 
 
 def test_w12_custom_table_f_counts_but_not_completed_credits():
-    table = build_custom_table({"A": Decimal("4.00"), "F": Decimal("0.00")})
+    table = build_custom_table([("A", "4.00"), ("F", "0.00")])
     result = semester_result(semester("Fall", [course("A", "A", 3), course("F", "F", 3)]), table)
     assert result.gpa == Decimal("2.00")
     assert result.completed_credits == 3
@@ -181,14 +181,31 @@ def test_academic_result_repeatable_and_student_unchanged():
 
 
 def test_unrounded_values_decide_best_semester():
-    table = build_custom_table({"A": Decimal("3.13"), "B": Decimal("3.12"), "F": Decimal("0.00")})
+    table = build_custom_table([("A", "3.13"), ("B", "3.12"), ("F", "0.00")])
+
+    def failed_courses(prefix):
+        courses = [
+            course(f"{prefix}{i}", "F", 9)
+            for i in range(1, 56)
+        ]
+        courses.append(course(f"{prefix}56", "F", 2))
+        return courses
+
     profile = student(table, [
-        semester("Higher", [course("A", "A", 3), course("F1", "F", 497)]),
-        semester("Lower", [course("B", "B", 3), course("F2", "F", 497)]),
+        semester(
+            "Higher",
+            [course("A", "A", 3), *failed_courses("HF")],
+        ),
+        semester(
+            "Lower",
+            [course("B", "B", 3), *failed_courses("LF")],
+        ),
     ])
+
     result = academic_result(profile)
     higher = semester_result(profile.semesters[0], table)
     lower = semester_result(profile.semesters[1], table)
+
     assert round_half_up(higher.gpa) == round_half_up(lower.gpa) == Decimal("0.02")
     assert higher.gpa > lower.gpa
     assert result.best_semester == "Higher"

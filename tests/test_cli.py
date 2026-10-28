@@ -479,7 +479,8 @@ def test_main_menu_reprompts_after_invalid_choice(tmp_path):
     _, output = run_with_answers(path, ["abc", "9", "0"])
 
     assert "Invalid number" in output
-    assert output.count("Main menu:") >= 3
+    assert output.count("Choose an option:") == 3
+    assert "Number 9 is out of range" in output
 
 
 def test_numbered_menu_accepts_cancel_command(tmp_path):
