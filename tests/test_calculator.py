@@ -183,6 +183,7 @@ def test_academic_result_repeatable_and_student_unchanged():
 def test_unrounded_values_decide_best_semester():
     table = build_custom_table([("A", "3.13"), ("B", "3.12"), ("F", "0.00")])
 
+
     def failed_courses(prefix):
         courses = [
             course(f"{prefix}{i}", "F", 9)
@@ -190,6 +191,8 @@ def test_unrounded_values_decide_best_semester():
         ]
         courses.append(course(f"{prefix}56", "F", 2))
         return courses
+
+
 
     profile = student(table, [
         semester(
