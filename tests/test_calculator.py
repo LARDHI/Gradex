@@ -1,9 +1,12 @@
 from copy import deepcopy
 from dataclasses import FrozenInstanceError
 from decimal import Decimal
+from pathlib import Path
+import re
 
 import pytest
 
+from gpa_tracker import calculator as calculator_module
 from gpa_tracker.calculator import (
     AcademicResult,
     SemesterResult,
@@ -225,3 +228,8 @@ def test_semester_result_does_not_mutate_semester():
     before = deepcopy(sem)
     assert semester_result(sem, preset_table("4.0-plus-only")) == semester_result(sem, preset_table("4.0-plus-only"))
     assert sem == before
+
+
+def test_calculator_module_never_uses_float():
+    source = Path(calculator_module.__file__).read_text(encoding="utf-8")
+    assert re.search(r"\bfloat\b", source) is None

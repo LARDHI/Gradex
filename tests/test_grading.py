@@ -145,6 +145,13 @@ def test_custom_table_rejects_invalid_letters_with_specific_message(letter):
     assert repr(letter) in str(exc_info.value)
 
 
+@pytest.mark.parametrize("letter", ["ABC", "AB+", "AB-"])
+def test_custom_table_accepts_multi_character_letters(letter):
+    table = build_custom_table([(letter, "4.00"), ("F", "0.00")])
+    assert table.points_for(letter) == Decimal("4.00")
+    assert table.is_passing(letter) is True
+
+
 @pytest.mark.parametrize(
     "value",
     [
