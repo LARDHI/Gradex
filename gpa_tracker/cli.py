@@ -830,5 +830,5 @@ def run(
                 )
 
     except (KeyboardInterrupt, EOFError):
-        output_func("Exiting. Your saved data is unchanged.")
+        output_func("Exiting. Your data is saved.")
         return 0
