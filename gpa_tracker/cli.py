@@ -607,20 +607,43 @@ def _prediction_screen(
             if course.status is CourseStatus.IN_PROGRESS
         ]
 
+        def ask_expected(course: Course) -> tuple[str | None, bool]:
+            """Ask for an expected grade; /skip omits it, /cancel aborts."""
+            valid_letters = ", ".join(student.table.letters)
+            while True:
+                answer = input_func(
+                    f"Expected grade for {course.code} (or /skip): "
+                ).strip()
+                if answer.casefold() == "/cancel":
+                    return None, True
+                if answer.casefold() == "/skip":
+                    return None, False
+                if not answer:
+                    output_func(
+                        "Grade cannot be empty. Enter one of the valid letters."
+                    )
+                    continue
+                grade = answer.upper()
+                try:
+                    student.table.points_for(grade)
+                except GradingError:
+                    output_func(
+                        f"Invalid grade {answer!r}. Valid letters for this table, "
+                        f"in order: {valid_letters}."
+                    )
+                    continue
+                return grade, False
+
         # Expectations are local to this selected-semester session.
         expected: dict[str, str] = {}
         cancelled = False
         for course in in_progress:
-            grade = ask_grade(
-                student.table,
-                label=f"Expected grade for {course.code}: ",
-                input_func=input_func,
-                output_func=output_func,
-            )
-            if grade is None:
+            grade, cancel_requested = ask_expected(course)
+            if cancel_requested:
                 cancelled = True
                 break
-            expected[course.code] = grade
+            if grade is not None:
+                expected[course.code] = grade
 
         if cancelled:
             continue
@@ -662,13 +685,12 @@ def _prediction_screen(
                 continue
 
             course = in_progress[course_index - 1]
-            grade = ask_grade(
-                student.table,
-                label=f"Expected grade for {course.code}: ",
-                input_func=input_func,
-                output_func=output_func,
-            )
-            if grade is not None:
+            grade, cancel_requested = ask_expected(course)
+            if cancel_requested:
+                continue
+            if grade is None:
+                expected.pop(course.code, None)
+            else:
                 expected[course.code] = grade
 
 

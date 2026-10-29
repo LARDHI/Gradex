@@ -457,6 +457,142 @@ def test_prediction_does_not_persist_expected_grades(tmp_path):
     assert course.grade is None
 
 
+def make_prediction_student():
+    """Return a student with two in-progress courses in Fall 2026."""
+    student = Student("Test Student", preset_table("4.0-plus-minus"))
+    student.add_semester("Fall 2026")
+    student.add_course(
+        "Fall 2026",
+        Course(
+            code="CS101",
+            name="Intro",
+            credits=3,
+            status=CourseStatus.IN_PROGRESS,
+            grade=None,
+        ),
+    )
+    student.add_course(
+        "Fall 2026",
+        Course(
+            code="CS102",
+            name="Data Structures",
+            credits=3,
+            status=CourseStatus.IN_PROGRESS,
+            grade=None,
+        ),
+    )
+    return student
+
+
+def test_prediction_skip_one_expected_grade_reports_incomplete(tmp_path):
+    path = tmp_path / "student.json"
+    storage.save_student(make_prediction_student(), path)
+    original = path.read_bytes()
+
+    code, output = run_with_answers(
+        path,
+        [
+            "4", "1",
+            "/skip",  # CS101
+            "A-",     # CS102
+            "0",      # Back from prediction
+            "0",      # Exit
+        ],
+    )
+
+    assert code == 0
+    assert "Prediction for Fall 2026: incomplete." in output
+    assert "Expected grades still needed for: CS101" in output
+    assert "Predicted" not in output
+    assert "Semester GPA" not in output
+    assert "CGPA" not in output
+    assert "Prediction menu:" in output
+    assert "Main menu:" in output
+    assert path.read_bytes() == original
+
+
+def test_prediction_cancel_on_expected_grade_abandons_prediction(tmp_path):
+    path = tmp_path / "student.json"
+    storage.save_student(make_prediction_student(), path)
+    original = path.read_bytes()
+
+    code, output = run_with_answers(
+        path,
+        [
+            "4", "1",
+            "/cancel",  # CS101
+            "0",        # Back from semester list
+            "0",        # Exit
+        ],
+    )
+
+    assert code == 0
+    assert "incomplete" not in output.lower()
+    assert "Prediction for" not in output
+    assert path.read_bytes() == original
+
+
+def test_prediction_rejects_empty_expected_grade_and_asks_again(tmp_path):
+    path = tmp_path / "student.json"
+    storage.save_student(make_prediction_student(), path)
+    original = path.read_bytes()
+
+    code, output = run_with_answers(
+        path,
+        [
+            "4", "1",
+            "",        # CS101: rejected
+            "A-",      # CS101 again
+            "A-",      # CS102
+            "0", "0",
+        ],
+    )
+
+    assert code == 0
+    assert "Grade cannot be empty. Enter one of the valid letters." in output
+    assert output.count("Expected grade for CS101") == 2
+    assert "Prediction for Fall 2026" in output
+    assert "Predicted" in output
+    assert path.read_bytes() == original
+
+
+def test_prediction_never_changes_saved_file_bytes(tmp_path):
+    path = tmp_path / "student.json"
+    storage.save_student(make_prediction_student(), path)
+    original = path.read_bytes()
+
+    code, output = run_with_answers(
+        path,
+        ["4", "1", "A-", "A-", "0", "0"],
+    )
+
+    assert code == 0
+    assert "Predicted" in output
+    assert path.read_bytes() == original
+
+
+def test_prediction_incomplete_menu_can_fill_missing_grade(tmp_path):
+    path = tmp_path / "student.json"
+    storage.save_student(make_prediction_student(), path)
+    original = path.read_bytes()
+
+    code, output = run_with_answers(
+        path,
+        [
+            "4", "1",
+            "/skip",  # CS101
+            "A-",     # CS102
+            "1", "1", "A-",  # Change CS101's missing expected grade
+            "0", "0",
+        ],
+    )
+
+    assert code == 0
+    assert "Prediction for Fall 2026: incomplete." in output
+    assert "Predicted" in output
+    assert path.read_bytes() == original
+
+
 def test_prediction_lists_when_no_courses_are_in_progress(tmp_path):
     path = tmp_path / "student.json"
     create_file(path, make_student(with_courses=True))
