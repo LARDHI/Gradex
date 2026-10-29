@@ -114,6 +114,11 @@ def test_normalization_and_invalid_grades():
         normalize_grade(None)
 
 
+def test_normalize_grade_collapses_repeated_spaces():
+    assert normalize_grade("  b   +  ") == "B +"
+    assert normalize_grade("a\t\tb") == "A B"
+
+
 def test_custom_table_builds_and_looks_up_valid_values():
     table = build_custom_table([("A", "4.00"), ("B", "3.00"), ("F", "0.00")])
     assert table.table_id == "custom"

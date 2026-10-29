@@ -12,11 +12,11 @@ class GradingError(ValueError):
 
 
 def normalize_grade(text: str) -> str:
-    """Trim surrounding whitespace and uppercase a grade letter."""
+    """Collapse whitespace, trim the ends, and uppercase a grade letter."""
     if not isinstance(text, str):
         raise GradingError(f"Invalid grade {text!r}: expected a string.")
 
-    normalized = text.strip().upper()
+    normalized = " ".join(text.split()).upper()
     if not normalized:
         raise GradingError(f"Invalid grade {text!r}: grade cannot be empty.")
     return normalized
