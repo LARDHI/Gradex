@@ -628,6 +628,26 @@ def test_numbered_menu_accepts_cancel_command(tmp_path):
     assert code == 0
 
 
+def test_ctrl_c_at_main_menu_exits_cleanly_and_reports_saved(tmp_path):
+    path = tmp_path / "student.json"
+    create_file(path)
+    original = path.read_bytes()
+    output = []
+
+    def interrupt(_prompt):
+        raise KeyboardInterrupt
+
+    code = cli.run(
+        path,
+        input_func=interrupt,
+        output_func=lambda message="": output.append(str(message)),
+    )
+
+    assert code == 0
+    assert "Exiting. Your data is saved." in output
+    assert path.read_bytes() == original
+
+
 def test_saved_file_contains_raw_facts_not_predictions(tmp_path):
     path = tmp_path / "student.json"
     create_file(path, make_student(with_courses=True))
