@@ -160,13 +160,3 @@ def predict_semester(
         actual_cgpa=actual_cgpa,
         predicted_cgpa=predicted_cgpa,
     )
-
-
-def clear_expected(expected: Mapping[str, str], code: str) -> dict[str, str]:
-    """Return a copy without the requested course code, ignoring case."""
-    target_key = _code_key(code)
-    return {
-        existing_code: grade
-        for existing_code, grade in expected.items()
-        if _code_key(existing_code) != target_key
-    }

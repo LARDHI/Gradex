@@ -9,7 +9,7 @@ import pytest
 from gpa_tracker.calculator import academic_result, best_and_lowest, semester_result
 from gpa_tracker.grading import preset_table
 from gpa_tracker.models import Course, CourseStatus, Semester, Student, ValidationError
-from gpa_tracker.prediction import PredictionResult, clear_expected, predict_semester
+from gpa_tracker.prediction import PredictionResult, predict_semester
 
 
 def course(code, grade=None, credits=3, status=CourseStatus.COMPLETED):
@@ -56,17 +56,6 @@ def test_w9_predicted_cgpa_uses_other_completed_semesters():
     assert result.actual_cgpa == Decimal("3.375")
     assert result.predicted_cgpa == Decimal("30.75") / Decimal("9")
     assert result.predicted_cgpa == Decimal("30.75") / Decimal("9")
-
-
-def test_w15_clear_expected_removes_only_requested_code_and_returns_copy():
-    expected = {"CS101": "A", "CS102": "B+"}
-    before = expected.copy()
-
-    cleared = clear_expected(expected, "cs101")
-
-    assert cleared == {"CS102": "B+"}
-    assert cleared is not expected
-    assert expected == before
 
 
 def test_expected_f_counts_in_gpa_denominator_but_not_completed_credits():
@@ -172,14 +161,6 @@ def test_prediction_does_not_mutate_student_or_expected_mapping():
     assert expected == expected_before
 
 
-def test_clear_expected_is_case_insensitive_and_does_not_mutate_input():
-    expected = {"Cs101": "A", "CS102": "B", "CS103": "C"}
-    before = expected.copy()
-    cleared = clear_expected(expected, "CS102")
-    assert cleared == {"Cs101": "A", "CS103": "C"}
-    assert expected == before
-
-
 def test_prediction_result_is_frozen():
     student = make_student([Semester("Fall", [in_progress("NOW")])])
     result = predict_semester(student, "Fall", {"NOW": "A"})
@@ -200,8 +181,3 @@ def test_duplicate_expected_keys_differing_only_by_case_are_rejected():
     student = make_student([Semester("Fall", [in_progress("NOW")])])
     with pytest.raises(ValidationError, match="Duplicate expected"):
         predict_semester(student, "Fall", {"NOW": "A", "now": "B"})
-
-
-def test_clear_expected_does_not_remove_nonmatching_codes():
-    expected = {"CS101": "A", "CS102": "B"}
-    assert clear_expected(expected, "cs103") == expected
