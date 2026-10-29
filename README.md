@@ -1,95 +1,39 @@
 # GPA Tracker
 
-GPA Tracker is an offline tool that allows students to manage their academic records and calculate semester GPA, cumulative GPA (CGPA), completed credits, and what-if predictions. It supports built-in and custom grading tables.
+GPA Tracker is an offline command-line tool for students to record semesters and courses
+and to calculate semester GPA, cumulative GPA (CGPA), completed credits, and what-if
+predictions. It stores one student profile per JSON file and needs no network connection.
 
-**Status:** In development (P8 — Menus and Command-Line Flow)
+## Features
 
-## Implemented
+- Numbered text menus: 1 Summary, 2 Semesters, 3 Courses, 4 Predict GPA, 5 Profile, 0 Exit.
+- First run creates the profile (name, then grading table). Later runs load the saved file
+  automatically.
+- Semesters: add, rename, and delete. Deleting a semester removes its courses after typing
+  `yes` to confirm.
+- Courses: add, edit, and delete. The status prompt comes first: Completed (a grade is
+  required) or In Progress (no grade yet).
+- Summaries show semester GPA, quality points, graded credits, in-progress course count,
+  CGPA, and the best and lowest semester.
+- What-if prediction for one semester: enter expected grades for its in-progress courses, or
+  type `/skip` for a course to see which expected grades are still missing. `/cancel`
+  abandons the prediction. Expected grades are held in memory only and are never saved.
+- Four built-in grading tables and custom grading tables.
+- Every successful change is saved immediately to JSON with an atomic replace. A damaged
+  file is reported and never overwritten.
+- Exact decimal arithmetic (no floats). GPA values display with two decimal places, rounded
+  half up.
+- Works on Windows, Linux, and macOS.
 
-### P0 — Project Setup
-- Python package and project configuration.
-- Development environment and test setup.
+## Requirements
 
-### P1 — Grading Tables
-- Four preset grading tables with decimal grade-point values.
-- Custom grading table creation and validation.
-- Grade normalization.
-- Grade-point lookup and passing-grade checks.
-- Unit tests for grading tables, custom table validation, and normalization.
-
-### P2 — Models and Validation
-- `Course`: validated course data, credit hours, status, and normalized grades.
-- `Semester`: course management, name validation, and duplicate-course prevention.
-- `Student`: student profile, semester and course management, and grading-table validation.
-- `ValidationError`: consistent validation errors.
-- Unit tests for model validation, data integrity, and atomic mutations.
-
-### P3 — Calculator
-- Exact `Decimal` arithmetic for quality points, semester GPA, and cumulative GPA (CGPA).
-- Excludes in-progress courses from actual calculations.
-- Counts failed courses in GPA calculations but excludes their credits from completed credits.
-- Calculates best and lowest semesters using unrounded GPAs, preserving the earliest semester in ties.
-- Rounds displayed GPA values to two decimal places using `ROUND_HALF_UP`.
-- Frozen result dataclasses for semester and academic results.
-- Unit tests for calculation rules, rounding, retakes, ties, and model immutability.
-
-### P4 — Prediction
-- What-if predictions for in-progress courses in one selected semester.
-- Keeps actual semester results and actual CGPA alongside predicted values.
-- Validates expected grades against the active grading table; expected grades remain in memory only.
-- Calculates predicted semester GPA, completed credits, and CGPA using exact `Decimal` arithmetic without rounding.
-- Reports missing expected grades and withholds predicted values until all selected-semester in-progress courses have expectations.
-- Includes failing expected grades in GPA calculations but excludes their credits from predicted completed credits.
-- Unit tests for W8, W9, W15, validation, case-insensitive course-code matching, and non-mutation.
-
-### P5 — Storage
-- Saves student profiles to JSON and restores them from saved files.
-- Preserves student information, semesters, courses, course statuses, grades, and grading-table configuration.
-- Supports all four preset grading tables and custom grading tables.
-- Uses a versioned JSON schema to validate persisted data.
-- Rejects malformed JSON, unsupported schema versions, unknown fields, invalid values, and inconsistent course data.
-- Uses atomic file replacement when saving to protect existing data from failed writes.
-- Leaves invalid data files unchanged when loading fails.
-- Provides `apply_and_save` to persist a change and roll back in-memory state if the change or save fails.
-- Includes tests for round-trip persistence, validation, failed writes, and rollback.
-
-### P6 — Input Prompts
-- Added reusable input helpers for text, whole numbers, menu choices, course status, grades, deletion confirmation, yes/no questions, and custom grading entries.
-- Retries empty or invalid answers with specific messages; supports case-insensitive `/cancel` without treating Back (`0`) as cancellation.
-- Supports injectable input/output functions for deterministic tests.
-- Uses existing grade normalization, grading-table validation, and `CourseStatus` values.
-- Includes acceptance tests for validation, retries, cancellation, and injected I/O.
-
-### P7 — Text Formatting
-- Added pure formatting helpers for GPA and quality points, course lists and statuses, semester and academic summaries, the combined summary screen, and prediction comparisons.
-- Formats GPA and quality points to two decimal places using `ROUND_HALF_UP`; unavailable values display as `N/A`.
-- Added acceptance tests for output layout, rounding, empty and incomplete results, and repeatability.
-- P7 remains in progress until the test suite and required checks are verified.
-
-## In progress
-
-### P8 — Menus and Command-Line Flow (In Progress)
-
-- Interactive command-line menus for academic summaries, semesters, courses,
-  GPA predictions, and student profile settings.
-- First-run profile setup and loading existing student data.
-- Semester and course creation, editing, and deletion.
-- Input validation, operation cancellation, and deletion confirmation.
-- Automatic persistence after successful changes, with protection against
-  failed or cancelled operations.
-- Support for selecting a custom data file using `--file PATH`.
-- In-memory GPA predictions that do not modify or persist expected grades.
-- Acceptance tests for CLI navigation, data persistence, validation,
-  cancellation, and error handling.
-
-P8 remains in progress until the implementation, all required acceptance
-cases, and the full test suite have been verified.
+- Python 3.10 or newer.
+- No other runtime dependencies. `pytest` is installed only for development.
 
 ## Install
 
-Python 3.10 or newer is required.
-
-Create and activate a virtual environment, then install the project with its development dependencies.
+Create and activate a virtual environment, then install the project with its development
+dependencies.
 
 ### Windows (PowerShell)
 
@@ -109,16 +53,79 @@ python -m pip install -e ".[dev]"
 
 ## Run
 
+Start the interactive menus with the default data file:
+
 ```bash
 python -m gpa_tracker
 ```
 
-The interactive command-line interface is under development.
-
-Run GPA Tracker with the default data file:
+Use a different data file:
 
 ```bash
-python -m gpa_tracker
+python -m gpa_tracker --file PATH
+```
+
+On Windows, quote paths that contain spaces:
+
+```powershell
+python -m gpa_tracker --file "C:\Users\me\Documents\student.json"
+```
+
+Every successful change is saved as soon as it is made. Ctrl+C or end of input exits
+cleanly.
+
+## Data location
+
+The default data file is:
+
+```text
+~/.gpa_tracker/data.json
+```
+
+On Windows this resolves to `C:\Users\<name>\.gpa_tracker\data.json`. The folder is created
+when the first save happens. `--file PATH` overrides the default for that run.
+
+The file stores raw facts only: the profile, the grading table, semesters, and courses
+(code, name, credits, status, grade), with `"schema_version": 1`. GPA values and predictions
+are never stored.
+
+## Grading tables
+
+The four built-in tables are 4.0 Plus Only, 4.0 Plus/Minus, 5.0 Plus Only, and
+5.0 Plus/Minus.
+
+**The four built-in tables are the owner's baseline and have NOT been verified against any
+official university table. Users must check their own university's table.**
+
+| Grade | 4.0 Plus Only | 4.0 Plus/Minus | 5.0 Plus Only | 5.0 Plus/Minus |
+|---|---|---|---|---|
+| A+ | 4.00 | 4.00 | 5.00 | 5.00 |
+| A | 3.75 | 3.75 | 4.75 | 4.75 |
+| A- | n/a | 3.67 | n/a | 4.50 |
+| B+ | 3.50 | 3.33 | 4.50 | 4.25 |
+| B | 3.00 | 3.00 | 4.00 | 4.00 |
+| B- | n/a | 2.67 | n/a | 3.75 |
+| C+ | 2.50 | 2.33 | 3.50 | 3.50 |
+| C | 2.00 | 2.00 | 3.00 | 3.00 |
+| C- | n/a | 1.67 | n/a | 2.75 |
+| D+ | 1.50 | 1.33 | 2.50 | 2.50 |
+| D | 1.00 | 1.00 | 2.00 | 2.00 |
+| D- | n/a | 0.67 | n/a | 1.75 |
+| F | 0.00 | 0.00 | 1.00 | 1.00 |
+
+A custom table can be entered at first run or from the profile screen while the profile has
+no courses. Rules: 1 to 20 entries; each letter is 1 to 3 characters using letters and an
+optional `+` or `-`; points range from 0.00 to 5.00 with at most two decimal places; letters
+are unique ignoring case; the letter `F` is required and is the only failing grade. The
+grading table is locked once any course exists.
+
+## Known limits
+
+Out of scope for V1:
+
+- Target-GPA planning, retake policies beyond counting every attempt, fractional credits,
+  saving predictions, GUI or web, multiple profiles per file, other languages, converting
+  grades between systems.
 
 ## Tests
 
@@ -128,28 +135,5 @@ Run the test suite with:
 python -m pytest
 ```
 
-## Data location
-
-The default storage path provided by the storage module is:
-
-```text
-~/.gpa_tracker/data.json
-```
-
-This resolves to a `.gpa_tracker` directory inside the current user's home directory. The storage module creates the parent directory when saving to a path that requires it.
-
-Storage operations currently require calling the storage functions programmatically. The CLI does not yet provide interactive loading or saving.
-
-## Known limits
-
-```markdown
-- P8 CLI behavior remains subject to acceptance-test verification.
-- Prediction expectations remain in memory and are not persisted.
-- Retakes count as separate attempts; the tool does not replace an earlier
-  grade with a newer one.
-- The JSON storage schema is currently version 1.
-- Prediction expectations remain in memory and are not persisted.
-- Retakes count as separate attempts; the tool does not replace an earlier grade with a newer one.
-- The JSON storage schema is currently version 1.
-
-See [the project specification](docs/SPEC.md) for the intended scope and requirements.
+The suite contains 301 tests. The manual checklist (C1-C22), the rule-to-test traceability
+table, and the recorded gaps are in [docs/verification.md](docs/verification.md).

@@ -2,22 +2,16 @@
 
 ## [Unreleased]
 
-### In Progress — P8: Menus and Command-Line Flow
+## [1.0.0] - 2026-10-29
 
-- Developing the interactive command-line flow for summaries, semesters,
-  courses, GPA predictions, and profile settings.
-- Integrating first-run setup, saved-profile loading, and configurable
-  data-file paths through `--file PATH`.
-- Implementing semester and course management with validation,
-  cancellation, and deletion confirmation.
-- Integrating persistence for successful changes while protecting saved
-  data from failed or cancelled operations.
-- Keeping GPA prediction expectations in memory without persisting them.
-- Preparing acceptance tests for CLI navigation, persistence, validation,
-  cancellation, and error handling.
-
-P8 is not complete until the required acceptance cases and full test suite
-have been verified.
+### Added
+- Complete interactive command-line flow for summaries, semesters, courses, GPA predictions, and profile settings, including first-run setup.
+- Automatic JSON persistence after every successful change, with validated loading, atomic writes, and rollback when a change or save fails.
+- `--file PATH` to choose the data file; the default is `~/.gpa_tracker/data.json`.
+- What-if prediction with expected grades held in memory only, including `/skip` for a missing grade and `/cancel` to abandon the prediction.
+- Four built-in grading tables and validated custom grading tables.
+- Exact `Decimal` calculations and plain-text output with two-decimal rounding.
+- P9 verification report with the manual checklist and traceability in `docs/verification.md`.
 
 ### Added — P7: Text Formatting
 - Added pure formatting helpers for GPA and quality points, course lists and statuses, semester and academic summaries, the combined summary screen, and prediction comparisons.
@@ -48,7 +42,6 @@ have been verified.
 - Added `predict_semester` to calculate predicted semester GPA, completed credits, and CGPA for one selected semester.
 - Added validation for selected semesters, in-progress courses, and expected grades against the active grading table.
 - Added missing-grade reporting; incomplete predictions return `None` for predicted values.
-- Added `clear_expected` to remove a course's expected grade case-insensitively without mutating the input mapping.
 - Kept predictions in memory only and preserved actual student data and best/lowest semester results.
 - Added 21 tests covering W8, W9, W15, validation, Decimal calculations, and non-mutation.
 
@@ -78,3 +71,6 @@ have been verified.
 ### Added — P0: Project Setup
 - Initial project skeleton and Python package configuration.
 - Development and test setup.
+
+### Known limits
+- Target-GPA planning, retake policies beyond counting every attempt, fractional credits, saving predictions, GUI or web, multiple profiles per file, other languages, converting grades between systems.
