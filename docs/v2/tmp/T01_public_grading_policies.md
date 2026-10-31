@@ -1,12 +1,14 @@
 # T01: Public grading policy research
 
-**Status: PARTIAL (11 of at least 12 policies recorded; 10 of at least 6 regions, all ten regions of the definition covered).** Not ready for acceptance. Intended repo path: `docs/v2/tmp/p02/T01_public_grading_policies.md` (assigned path in the manifest: `claude/tmp/p02/T01_public_grading_policies.md`). Written by a worker; not edited into the execution log.
+**Status: PARTIAL (12 policies recorded; minimum count of 12 reached; 10 of at least 6 regions, all ten regions of the definition covered).** Not ready for acceptance: synthesis findings (AC8) are not written, several entries rest on search excerpts, and nothing is independently verified. Intended repo path: `docs/v2/tmp/p02/T01_public_grading_policies.md` (assigned path in the manifest: `claude/tmp/p02/T01_public_grading_policies.md`). Written by a worker; not edited into the execution log.
+
+**Location note (2026-10-31, added with P12):** this copy was found at the Project root as `T01_public_grading_policies.md`, not at the assigned path `claude/tmp/p02/T01_public_grading_policies.md` (that path did not exist). It was updated in place and not moved or duplicated. The Orchestrator decides whether to relocate it.
 
 | Field | Content |
 |---|---|
 | Task ID and title | T01, Public grading policy research |
 | Research question | Which grading-policy dimensions and interactions between rules occur across real public university grading policies, so Gradex V2's custom grading requirements can be defined from evidence? |
-| Methodology | Policies are chosen one at a time, primary source (the university's own registrar or catalogue page) first. Third-party GPA sites are not used as sources for a policy. Region definition [PR from log 12.0]: world regions (North America; Latin America and Caribbean; Europe; Middle East and North Africa; Sub-Saharan Africa; South Asia; East Asia; Southeast Asia; Oceania; Central Asia). Candidate sample not yet fixed beyond entries P01 to P11. |
+| Methodology | Policies are chosen one at a time, primary source (the university's own registrar or catalogue page) first. Third-party GPA sites are not used as sources for a policy. Region definition [PR from log 12.0]: world regions (North America; Latin America and Caribbean; Europe; Middle East and North Africa; Sub-Saharan Africa; South Asia; East Asia; Southeast Asia; Oceania; Central Asia). Candidate sample not fixed beyond entries P01 to P12. |
 | Sources | See each entry. Access date for all: 2026-10-31. |
 | Verification status | Unverified. No independent verifier has re-checked anything. |
 
@@ -14,14 +16,14 @@
 
 | AC | State | Evidence |
 |---|---|---|
-| AC1 at least 12 policies, at least 6 regions | **Partly** (regions met, policy count not met) | 11 policies, 10 regions (Southeast Asia, North America, Middle East and North Africa, Europe, South Asia, Oceania, East Asia, Latin America and Caribbean, Sub-Saharan Africa, Central Asia) |
-| AC2 method, region definition, counts stated | Partly | Method and region definition above; counts: Southeast Asia 1 (Singapore 1), North America 1 (Canada 1), MENA 1 (Saudi Arabia 1), Europe 1 (Germany 1), South Asia 1 (India 1), Oceania 1 (Australia 1), East Asia 2 (South Korea 1, Japan 1), Latin America and Caribbean 1 (Chile 1), Sub-Saharan Africa 1 (Nigeria 1), Central Asia 1 (Kazakhstan 1); nine regions have one policy and East Asia has two, so no concentration analysis is possible |
-| AC3 direct source, access date, third-party flagged | Met for P01 to P11 (P02 to P05 read only as search excerpts of official pages; P06 main page read in full, secondary pages as excerpts; P07 regulation text read in full, other pages in full or as excerpts as stated; P08 regulation read in full; P09 regulation read in full, one comparison page as an excerpt; P10 sections 2.17 and 2.24 of the Academic Policy read in full as web pages, the full PDF not readable; P11 two official pages read in full, six more official pages as excerpts) | Official registrar page cited; third-party sites seen in search were not used |
-| AC4 dimensions recorded | Partly | P01 to P11; retake and rounding not found for several policies (stated per entry) |
-| AC5 unspecified rules identified | Partly | P01 to P11 |
-| AC6 interactions identified | Partly | P01 to P11 |
-| AC7 course loads for AS-01 | Partly | P01, P03 (example only), P04 (derived), P07, P08 (workload stated, typical course count derived), P09 (unit load stated), P10 (summer load only); P11 has none; gaps for the others |
-| AC8 R2 / AS-06 implications | **Not met** | Premature with eleven policies |
+| AC1 at least 12 policies, at least 6 regions | **Met on count** (depth varies by entry, see AC3) | 12 policies, 10 regions (Southeast Asia, North America, Middle East and North Africa, Europe, South Asia, Oceania, East Asia, Latin America and Caribbean, Sub-Saharan Africa, Central Asia) |
+| AC2 method, region definition, counts stated | Partly | Method and region definition above; counts: Southeast Asia 2 (Singapore 1, Philippines 1), North America 1 (Canada 1), MENA 1 (Saudi Arabia 1), Europe 1 (Germany 1), South Asia 1 (India 1), Oceania 1 (Australia 1), East Asia 2 (South Korea 1, Japan 1), Latin America and Caribbean 1 (Chile 1), Sub-Saharan Africa 1 (Nigeria 1), Central Asia 1 (Kazakhstan 1); eight regions have one policy and two regions (Southeast Asia, East Asia) have two, so no concentration analysis is possible and no representativeness claim is supported |
+| AC3 direct source, access date, third-party flagged | Met for P01 to P12 (P02 to P05 read only as search excerpts of official pages; P06 main page read in full, secondary pages as excerpts; P07 regulation text read in full, other pages in full or as excerpts as stated; P08 regulation read in full; P09 regulation read in full, one comparison page as an excerpt; P10 sections 2.17 and 2.24 of the Academic Policy read in full as web pages, the full PDF not readable; P11 two official pages read in full, six more official pages as excerpts; P12 three official UP unit pages read in full, two official memoranda as excerpts, the Revised UP Code itself not read) | Official registrar or university-unit page cited; third-party sites seen in search were not used |
+| AC4 dimensions recorded | Partly | P01 to P12; retake and rounding not found for several policies (stated per entry) |
+| AC5 unspecified rules identified | Partly | P01 to P12 |
+| AC6 interactions identified | Partly | P01 to P12 |
+| AC7 course loads for AS-01 | Partly | P01, P03 (example only), P04 (derived), P07, P08 (workload stated, typical course count derived), P09 (unit load stated), P10 (summer load only), P12 (a "normal load of 15 units" is mentioned only in the honours rule); P11 has none; gaps for the others |
+| AC8 R2 / AS-06 implications | **Not met** | The minimum sample is now reached, but the synthesis (option counts, interaction counts, labelled as findings) has not been written |
 
 ## Per-policy entries
 
@@ -424,15 +426,62 @@
 
 **What V1 could not represent:** pass/fail codes N, P, Q and the pending H and S states; percentage-based letters with school-specific bands and a second failing band (G); a retake lock after C; courses that count toward GPA only if registered toward graduation; school-level rule variation; no-GPA cohorts before 2010; GPA on a certificate but not on the transcript. **V1 can store the basic scale (A+ 4, A 3, B 2, C 1, F 0) as a custom table**, and V1's half-up rounding and "every attempt counts" retake rule do not contradict what was read.
 
-## Remaining work (not started)
+### P12: University of the Philippines (UP System), undergraduate; pages from UP Diliman, UP Cebu and UP Los Baños units
 
-- Select at least 1 more policy (the 6-region minimum is met and all ten regions of the definition have an entry; East Asia has two; a further entry should add variety, for example a second country in another region), each from the university's own page.
-- Record retake, rounding and fractional-credit rules per policy.
-- Independent verification of anything feeding R2 or AS-04 (high-impact).
+- Country / region: Philippines / Southeast Asia (second Southeast Asia entry; P01 is Singapore)
+- Why this university: it adds a grading style not yet in the sample: a numeric 1.00 to 5.00 scale with the best grade lowest (like P04 in direction) **plus a time-dependent "conditional" grade (4.0) and an incomplete (INC) that are resolved by removal examinations within one academic year**, and a System made of several constituent universities that publish the same rules on separate pages.
+- Primary sources (official UP unit pages that reproduce or cite the Revised UP Code and Board of Regents decisions; access date 2026-10-31; English; **the Revised UP Code itself was not read**):
+  - UP Diliman Department of Journalism, "Grading System" (**read in full**), quoting Revised UP Code Art. 369, 378 and 394 with their University Council and Board of Regents amendment dates (latest cited amendment: approved by the UP President on 2001-03-14): https://sites.google.com/up.edu.ph/upjourndept/academics/grading-system . The page has no edition date and may not match the current Code.
+  - UP Cebu School of Management, Office of the College Secretary, "Frequently Asked Questions" (**read in full**), citing OVPAA Memorandum No. 2023-55, Board of Regents decisions of 2015 (1310th meeting, "standardization of grades") and 2023 (1379th meeting), and Revised UP Code Art. 392 and 410: https://sites.google.com/up.edu.ph/som-ocs/faqs
+  - UP Los Baños College of Arts and Sciences page quoting Art. 371 with the grading table (**read in full**): https://cas.uplb.edu.ph/?p=824
+- Official pages seen only as search excerpts (claims taken from them are marked (excerpt)): OVPAA Memorandum No. 2021-95 on removal of INC and 4 (https://www.ac.upd.edu.ph/acmedia/images/newpdfs/OVPAA_Memo_2021_95_Inc_4.pdf) and UP Diliman Executive Committee supplemental FAQs for the second semester AY 2019-2020 (https://ovcaa.upd.edu.ph/wp-content/uploads/2020/10/EC-APPROVED-SUPPLEMENTAL-FAQs.pdf).
+- Third-party pages seen (leads only, not used as evidence): Wikipedia and its mirrors, scholaro.com, openeducat.org and several GWA-calculator sites. They list percentage bands for the 1.00 to 5.00 scale (for example 1.00 = 96 to 100%) and a "standard" GWA formula; **neither was found on the official pages read, so neither is recorded as a UP finding.** The same sources show that other Philippine universities use different bands and some use a 4.0 scale, so "Philippines" is not one policy.
+
+| Dimension | Finding | Basis |
+|---|---|---|
+| Scale and points (L1) | **Numeric grades only, lower is better, uneven steps.** 1.0 and 1.25 Excellent; 1.5 and 1.75 Very Good; 2.0 and 2.25 Good; 2.5 and 2.75 Satisfactory; 3.0 Pass; **4.0 Conditional (Failure)**; 5.0 Failure. The list of final grades has no value between 3.0 and 4.0 and none between 4.0 and 5.0. Values fit within 0 to 5, but a higher number is worse and the minimum is 1.0, not 0. | UPLB page (Art. 371); UP Cebu FAQ |
+| Letter forms (L4) | None for the main scale. Qualitative grades **H (Honors), P (Pass) and F (Fail)** are used for some subjects, and **S/U** for special students or audit. | Journalism page; UPLB page |
+| Passing / failing (L2) | 3.0 is the lowest pass; 5.0 fails. **4.0 is neither pass nor fail until removed**: a re-examination gives 3 or 5. Good scholastic standing is a final grade of 3.00 or better in at least 75% of registered units. | Journalism page; UP Cebu FAQ |
+| Non-GPA codes (L3) | **INC** is a grade but not a final grade and is not included in the computation for scholastic standing; when replaced by a final grade, the final grade is counted in the semester in which the removal is made. **DRP** (dropped) is not a grade. Qualitative grades (H, P, F) and S/U are not used in the GWA and only break ties in ranking. PE and NSTP courses are excluded from the GWA; PI 100 is included. Courses taken at a foreign university during student mobility are excluded. Grades of the second semester AY 2019-2020 were excluded from the GWA at UP Diliman (excerpt). | Journalism page; UP Cebu FAQ; EC FAQs (excerpt) |
+| Retakes (L5) | **Every attempt counts, with a conditional-grade state machine.** A 4 stays in the GWA until removed (re-examination only, one attempt, within one academic year with three regular removal periods); once removed, only the resulting 3 or 5 counts and the 4 remains on the transcript. An unremoved 4 becomes 5 automatically. A 5 (from a removal exam or from lapse) stays in the GWA; **if the course is re-enrolled the new grade is also counted and the units are added to the total units.** A 4 re-enrolled within the year is not removed (the right to remove is waived) and both the 4 and the new grade count. An INC cannot be re-enrolled within its one-year period. | Journalism page; UP Cebu FAQ |
+| Rounding (L6) | **Not found** on the official pages read. | Gap |
+| Credits (L7) | Academic units; weighted averages are mentioned ("weighted average grade", "units"). Whole or fractional units not seen. **The GWA formula itself is not written on the pages read.** | UP Cebu FAQ; gap |
+| Table scope (L8) | A System of constituent universities (Diliman, Cebu and Los Baños pages agree on the table). Colleges may add rules on good standing. A second average, the **CWA (Curriculum Weighted Average)**, is used for shifting programs and is computed on courses creditable in the new program. UP Cebu says the university does not issue a "GPA" computation, only a certificate of grade equivalency. | UP Cebu FAQ |
+| Standing rules | Per term, by the share of units: Warning (below 3.00 in 25% to 49% of registered units); Probation (50% to 75% of units with final grades); Dismissal (at least 76% of units with final grades); Permanent disqualification (100%). | UP Cebu FAQ (Art. 392) |
+| Course load (AS-01) | Not found as a typical course count. The Latin-honors rule refers to a "normal load of 15 units in all semesters". | UP Cebu FAQ (Art. 410) |
+
+**Rules the policy leaves unspecified or inconsistent (AS-10):**
+- **INC without a passing standing:** the Journalism page (Art. 369 text) says a grade of "3" or "5" shall be given, while the UPLB page (Art. 371 text) says "5.0". Two UP unit pages give different wording for the same rule; not resolved.
+- **Standing boundaries leave gaps and overlaps:** good standing allows failing at most 25% of units, but Warning starts at 25%, so exactly 25% fits both. Warning ends at 49% and Probation starts at 50%, and Probation ends at 75% while Dismissal starts at 76%, so values such as 49.5% or 75.5% fit nowhere unless units are counted in whole numbers. The three levels also use different denominators (registered units versus units with final grades).
+- **Which grades enter the GWA while INC is pending:** the page says INC is not included for scholastic standing; whether it is excluded from the GWA in the same way is not stated in those words.
+- The GWA formula, its rounding, the semester versus cumulative computation, and any percentage-to-grade conversion (each instructor or unit may set one) were not found on the official pages read.
+- The two main pages cite different dates (a 2001 amendment on the Journalism page, Board decisions of 2015 and 2023 on the Cebu page); current Code text was not read.
+
+**Interactions between rules that can change one calculation:**
+1. **Pending grade replaced later:** a 4.0 counts in the GWA until it is removed, then the 4 drops out and only the 3 or 5 counts, while the transcript keeps the 4. The result changes after the semester ends.
+2. **Attribution to a different semester:** a final grade replacing an INC is counted in the semester in which the removal is made, not the semester of the course.
+3. **Calendar-driven conversion:** a 4 not removed in one year becomes 5 on its own, so the GWA changes with the date even with no new work.
+4. **Retake with the old grade kept:** a 5 stays in the GWA when the course is re-enrolled and passed, and the re-enrolled units add to the total, so a retake raises the denominator (every attempt counts, unlike P05, P07 and P10 where a retake replaces).
+5. **Waiving removal by re-enrolling:** re-enrolling a 4 within the year keeps the 4 in the GWA together with the new grade.
+6. **Uneven scale and direction:** 3.0 to 4.0 is one full step after steps of 0.25, so one conditional grade moves the average much more than one grade point below it; lower is better, so "best semester" and any target are lower-is-better.
+7. **Parallel calculation:** scholastic standing is computed from the share of units below 3.00, not from the GWA, so one course can change standing and not the GWA, or the reverse.
+8. **Different deadlines for different purposes:** an INC or 4 must be removed within one academic year for the record, but before the end of the semester in which it was incurred for honorific-scholar status (UP Cebu).
+9. **Excluded courses and periods:** PE and NSTP are excluded while PI 100 is included; one whole semester (second semester AY 2019-2020) was excluded at UP Diliman.
+10. **Residence condition:** to complete an INC or remove a 4 the student must be enrolled or registered in residence, so a grade can stay pending because of enrolment status.
+
+**What V1 could not represent:** letter codes with digits or a decimal point (V1 custom letters allow only A to Z with an optional + or -), so the numeric codes 1.25 and 4.0 cannot be entered as such; a conditional grade (4.0) and INC as pending states that convert on a date or on an exam result; semester attribution of a replaced grade; course-category exclusions (PE, NSTP); a whole excluded term; a second average (CWA) and unit-share standing rules; lower-is-better direction in best-semester logic and targets. **Derived observation (my arithmetic, not a UP rule):** because the GWA is a linear average, a student could in principle enter 5 minus the grade as the points (1.0 as 4.00, 3.0 as 2.00, 4.0 as 1.00, 5.0 as 0.00) and convert the average back, but that would need letters for 11 numeric codes and would not handle the pending 4 or INC.
+
+## Remaining work
+
+- The minimum count (12 policies, 6 or more regions) is reached. Further entries are optional, not required by T01-AC1.
+- Write the synthesis for AC8: counts of distinct policy options and of important interactions relevant to R2 and AS-06, labelled as findings, not decisions. Not started.
+- Entries P02 to P05 were read only as search excerpts; reading the full official pages would raise their evidence level. Not started.
+- Retake, rounding and fractional-credit rules are still missing for several policies (see each entry's gaps).
+- Independent verification of anything feeding R2 or AS-04 (high-impact). Not assigned.
 
 ## Limitations
 
-- Eleven policies, ten regions (East Asia twice, the others once): no representativeness claim is possible.
+- Twelve policies, ten regions (East Asia and Southeast Asia twice, the others once): no representativeness claim is possible.
 - P07: the regulation copy read is a 2022 upload hosted by one SNU college; the current SNU registrar page was seen only as a Korean search excerpt. Retake, rounding and S/U are from the regulation text; the pass/fail threshold below F and the denominator wording (registered versus total credits) are open. Other Korean universities differ (for example 4.5 scales) and were not entered.
 - P08: one 2019 decree read in full; faculty complementary regulations and later amendments were not read. The Spanish text is my translation. Other Chilean universities were not entered and may differ in rounding, retakes and credits even on the same 1.0 to 7.0 scale.
 - P06: retake and rounding rules not found at university level; Sydney and other Australian universities were not entered and differ from UNSW.
@@ -442,3 +491,4 @@
 - P09: the regulation read is a student-guide PDF published by UNILAG's Institute of Continuing Education, undated, and its scope within the university is unconfirmed. Retake, rounding and several standing rules are unclear or missing; third-party claims about Nigerian carry-over rules were not used. University of Ibadan was seen only as one faculty page excerpt and not entered.
 - P10: only two sections of KazNU's Academic Policy were read, as undated web pages; the current PDF edition could not be fetched, and the credit definition, GPA formula, rounding and yearly GPA threshold are missing. Nazarbayev University and other Kazakh universities use similar tables but were not read as entries.
 - P11: the university-wide notice is a short 2021 PDF; the school-level percentage bands come from search excerpts of five different schools and are not one policy; the Faculty of Science and Engineering FAQ says the calculation and ranking method vary by department and year. The Japanese text beside the English was not independently translated.
+- P12: the rules come from three UP unit web pages that quote the Revised UP Code and Board of Regents decisions; the Code itself and the official UP Diliman Registrar pages on GWA were not read. The GWA formula, rounding, percentage-to-grade conversion and typical course load were not found on official pages (third-party calculator sites state a formula and rounding but were not used). The Journalism page text may be older than the Cebu and UPLB pages (Art. 369 versus Art. 371 wording differs on INC). The UP Diliman memoranda and the 2020 Executive Committee FAQs were seen only as excerpts. Only UP was entered; other Philippine universities use different scales, bands and rules.
