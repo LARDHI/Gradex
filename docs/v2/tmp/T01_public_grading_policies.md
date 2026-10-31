@@ -1,6 +1,6 @@
 # T01: Public grading policy research
 
-**Status: PARTIAL (5 of at least 12 policies recorded; 5 of at least 6 regions).** Not ready for acceptance. Intended repo path: `docs/v2/tmp/p02/T01_public_grading_policies.md` (assigned path in the manifest: `claude/tmp/p02/T01_public_grading_policies.md`). Written by a worker; not edited into the execution log.
+**Status: PARTIAL (6 of at least 12 policies recorded; 6 of at least 6 regions).** Not ready for acceptance. Intended repo path: `docs/v2/tmp/p02/T01_public_grading_policies.md` (assigned path in the manifest: `claude/tmp/p02/T01_public_grading_policies.md`). Written by a worker; not edited into the execution log.
 
 | Field | Content |
 |---|---|
@@ -14,9 +14,9 @@
 
 | AC | State | Evidence |
 |---|---|---|
-| AC1 at least 12 policies, at least 6 regions | **Not met** | 5 policies, 5 regions (Southeast Asia, North America, Middle East and North Africa, Europe, South Asia) |
-| AC2 method, region definition, counts stated | Partly | Method and region definition above; counts: Southeast Asia 1 (Singapore 1), North America 1 (Canada 1), MENA 1 (Saudi Arabia 1), Europe 1 (Germany 1), South Asia 1 (India 1); no concentration analysis possible yet |
-| AC3 direct source, access date, third-party flagged | Met for P01 to P05 (P02 to P05 read only as search excerpts of official pages) | Official registrar page cited; third-party sites seen in search were not used |
+| AC1 at least 12 policies, at least 6 regions | **Partly** (regions met, policy count not met) | 6 policies, 6 regions (Southeast Asia, North America, Middle East and North Africa, Europe, South Asia, Oceania) |
+| AC2 method, region definition, counts stated | Partly | Method and region definition above; counts: Southeast Asia 1 (Singapore 1), North America 1 (Canada 1), MENA 1 (Saudi Arabia 1), Europe 1 (Germany 1), South Asia 1 (India 1), Oceania 1 (Australia 1); no concentration analysis possible yet |
+| AC3 direct source, access date, third-party flagged | Met for P01 to P06 (P02 to P05 read only as search excerpts of official pages; P06 main page read in full, secondary pages as excerpts) | Official registrar page cited; third-party sites seen in search were not used |
 | AC4 dimensions recorded | Partly | P01 only; retake and rounding not found (stated below) |
 | AC5 unspecified rules identified | Partly | P01 only |
 | AC6 interactions identified | Partly | P01 only |
@@ -193,15 +193,52 @@
 
 **What V1 could not represent:** points above 5.00; multiple failing codes (FF, FR, E, F); replace-on-retake; zero-credit courses and credits above 9; separate course and project averages; two-letter and non-letter codes such as AA, DX, PP.
 
+### P06: University of New South Wales (UNSW Sydney), undergraduate and postgraduate coursework
+
+- Country / region: Australia / Oceania
+- Primary source (official, read in full; access date 2026-10-31; English): UNSW Current Students, "Guide to UNSW grades": https://www.unsw.edu.au/student/managing-your-studies/academic-life/grades-results-academic-standing/guide
+- Secondary official sources (search excerpts only, not fully read; claims taken from them are marked (excerpt)): UNSW student grade page https://student.unsw.edu.au/grade ; UNSW "Maximum repeat fails" https://www.unsw.edu.au/student/managing-your-studies/academic-life/grades-results-academic-standing/academic-progression/repeat-fails ; UNSW Optometry and Vision Science progression policy (2022) https://www.unsw.edu.au/content/dam/pdfs/medicine-health/optometry-vision-science/resources/2022-07-about/2022-07-progression-policy-3952-final.pdf
+- Third-party pages seen (leads only, not used as evidence): openeducat.org (WAM and GPA explainer).
+
+| Dimension | Finding | Basis |
+|---|---|---|
+| Scale and points (L1) | **No grade points and no GPA.** UNSW states it does not use a GPA system. Results are marks from 0 to 100 and a grade is derived: HD 85-100, DN 75-84, CR 65-74, PS 50-64, FL 0-49. | Guide page |
+| Summary statistic | WAM = sum(mark x units) / sum(units). Term WAM, cumulative WAM and faculty WAM exist. Each faculty has its own method for honours and medals. Worked example on the page: 81.625. | Guide page |
+| Letter forms (L4) | Two-letter codes (HD, DN, CR, PS, FL) plus about 25 other codes (AF, AW, NC, PW, SY, XE and others). Merged older institutions used A to D; some pre-2002 MBA cohorts used A/B/C. | Guide page |
+| Passing / failing (L2) | FL (0-49) is the failing grade. AF (absent fail) and UF (unsatisfactory fail) are further fail codes. PC (pass conceded) was discontinued after Summer Term 2015/6. | Guide page |
+| Non-GPA codes (L3) | Not in WAM: SY, XE, NA, RS, AS, NF, NC, RD, EC, AW, PW. Only results with a numerical mark are included. **AF is the exception:** since Semester 1, 2003 it is assigned a mark of zero and included. | Guide page |
+| Nominal marks | A grade entered without a numeric mark gets a nominal mark in WAM: PS 55, CR 70, DN 80, HD 90, FL 25. Under the SY/FL no-mark basis, FL is not included at all. | Guide page |
+| Retakes (L5) | **Not stated on the guide page.** One UNSW faculty document (Optometry, progression to Stage 4) says that when a course is attempted more than once all marks are included; its example is a 36 FL then a 64 PS, both counted (excerpt). This is faculty-level and for a progression WAM, not a university-wide rule. | Optometry policy (excerpt); gap |
+| Rounding (L6) | **Not found.** The page example (81.625) is shown unrounded. | Gap |
+| Credits (L7) | Units of credit (UOC); the example uses 6 and 3 UOC. Fractional UOC not confirmed or excluded. | Guide page |
+| Table scope (L8) | Rules differ by period and faculty: PW treatment changed by year, faculties have their own WAM methods for honours and medals, and merged older institutions used other scales. Transfer-credit marks from other institutions are excluded from WAM; since Semester 1, 2016 transfer credit from another UNSW program counts. | Guide page |
+| Course load (AS-01) | **Not found on the pages read.** | Gap |
+
+**Rules the policy leaves unspecified or inconsistent (AS-10):**
+- No university-wide retake rule and no WAM rounding rule were found.
+- The only retake evidence is one faculty's progression WAM, so it may not be the same as the general WAM.
+- No typical course load was found.
+
+**Interactions between rules that can change one calculation:**
+1. Two parallel calculations: AW, NC and, in some periods, PW are excluded from WAM but counted as failed courses in academic standing. One course changes one result and not the other.
+2. Policy change over time: PW is never in WAM, but counted as a fail in standing from 2014 to 2020 and not from 2021. A record spanning several years needs date-dependent rules.
+3. Nominal marks with numeric marks: a grade-only result gets a fixed mark (FL = 25), but FL on the SY/FL no-mark basis is excluded.
+4. AF as zero with other fail-like codes: AF counts as zero in WAM while AW and NC do not.
+5. Retake with WAM: if both attempts count, a failed first attempt permanently lowers the average, unlike a replace rule (compare P05).
+6. External GPA conversion: the page says AW is treated as a fail for GPA by other bodies (for example UAC). That is a conversion outside UNSW's own system.
+
+**What V1 could not represent:** a 0-100 mark scale with a weighted average instead of grade points; nominal marks per grade band; AF as a zero while other fail-like codes are excluded; date-dependent rules; two parallel calculations (WAM and academic standing); a faculty-specific WAM.
+
 ## Remaining work (not started)
 
-- Select at least 7 more policies from at least 1 more region, each from the university's own page.
+- Select at least 6 more policies (the 6-region minimum is now met), each from the university's own page.
 - Record retake, rounding and fractional-credit rules per policy.
 - Independent verification of anything feeding R2 or AS-04 (high-impact).
 
 ## Limitations
 
-- Five policies, five regions: no representativeness claim is possible.
+- Six policies, six regions: no representativeness claim is possible.
+- P06: retake and rounding rules not found at university level; Sydney and other Australian universities were not entered and differ from UNSW.
 - The Registrar page was read in full; the two PDFs only through search excerpts.
 - Search results from commercial sites (grading-scale pages and calculators) describing NUS and NTU appeared; they were not used as evidence.
 - NTU, mentioned in those commercial pages, has not been checked against an NTU source.
